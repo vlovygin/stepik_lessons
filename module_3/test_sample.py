@@ -32,7 +32,6 @@ def test_user_can_be_login():
         email_input.send_keys(user["email"])
         password_input = browser.find_element_by_css_selector(login_password_input_locator)
         password_input.send_keys(user["password"])
-
         login_submit_button = browser.find_element_by_css_selector(login_submit_button_locator)
         login_submit_button.click()
 
