@@ -3,7 +3,7 @@ from selenium import webdriver
 main_page_link = "http://selenium1py.pythonanywhere.com/ru"
 
 # main page
-login_or_authorize_button_locator = "#login_link"
+login_or_authorize_link_locator = "#login_link"
 alert_message_locator = "#messages[style*='visible'] div.alert"
 
 # login page
@@ -25,8 +25,8 @@ def test_user_can_be_login():
         browser.get(main_page_link)
 
         # Act
-        login_button = browser.find_element_by_css_selector(login_or_authorize_button_locator)
-        login_button.click()
+        login_link = browser.find_element_by_css_selector(login_or_authorize_link_locator)
+        login_link.click()
 
         login_form_header = browser.find_element_by_css_selector(login_form_header_locator)
         assert login_form_header.text == "Войти", "Page should contain login form"
