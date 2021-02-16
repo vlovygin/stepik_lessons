@@ -38,6 +38,7 @@ def test_user_can_be_login():
         login_submit_button = browser.find_element_by_css_selector(login_submit_button_locator)
         login_submit_button.click()
 
+        # Assert
         alert_message = browser.find_element_by_css_selector(alert_message_locator)
         assert success_login_alert_message in alert_message.text, "Page should contain success login alert message"
 
@@ -46,4 +47,3 @@ def test_user_can_be_login():
 
 
 test_user_can_be_login()
-
