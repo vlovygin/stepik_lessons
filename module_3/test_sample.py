@@ -24,17 +24,19 @@ def test_user_can_be_login():
         browser.implicitly_wait(5)
         browser.get(main_page_link)
 
-        # Act
         login_link = browser.find_element_by_css_selector(login_or_authorize_link_locator)
         login_link.click()
 
         login_form_header = browser.find_element_by_css_selector(login_form_header_locator)
         assert login_form_header.text == "Войти", "Page should contain login form"
 
+        # Act
         email_input = browser.find_element_by_css_selector(login_email_input_locator)
         email_input.send_keys(user["email"])
+
         password_input = browser.find_element_by_css_selector(login_password_input_locator)
         password_input.send_keys(user["password"])
+
         login_submit_button = browser.find_element_by_css_selector(login_submit_button_locator)
         login_submit_button.click()
 
