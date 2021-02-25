@@ -9,10 +9,14 @@ def pytest_addoption(parser):
                      help='Choose user language: "ru", "en-GB", "es", "fr"')
 
 
+@pytest.fixture(scope="session")
+def user_language(request):
+    return request.config.getoption("language")
+
+
 @pytest.fixture(scope="function")
-def browser(request):
+def browser(request, user_language):
     browser_name = request.config.getoption("browser_name")
-    user_language = request.config.getoption("language")
 
     if browser_name == "chrome":
         options = webdriver.ChromeOptions()
@@ -24,8 +28,6 @@ def browser(request):
         browser = webdriver.Firefox(firefox_profile=fp)
     else:
         raise pytest.UsageError("--browser_name should be chrome or firefox")
-
-    browser.user_language = user_language
 
     yield browser
     browser.quit()

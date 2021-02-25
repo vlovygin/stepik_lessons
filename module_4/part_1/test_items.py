@@ -8,15 +8,13 @@ catalog_item_link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-w
 add_to_basket_button_locator = (By.CSS_SELECTOR, "#add_to_basket_form button.btn-add-to-basket")
 
 
-def test_item_should_contains_add_to_basket_button(browser):
+def test_item_should_contains_add_to_basket_button(browser, user_language):
     wait = WebDriverWait(browser, 10)
     # Наименования названия кнопки на разных языках
     button_text = {'ru': 'Добавить в корзину', 'en-GB': 'Add to basket',
                    'es': 'Añadir al carrito', 'fr': 'Ajouter au panier'}
-    # Язык пользователя
-    language = browser.user_language
     # Текст кнопки в зависимости от языка
-    add_to_basket_button_text = button_text[language]
+    add_to_basket_button_text = button_text[user_language]
 
     # Открываем товар по ссылке
     browser.get(catalog_item_link)
