@@ -21,7 +21,7 @@ def test_item_should_contains_add_to_basket_button(browser):
     # Открываем товар по ссылке
     browser.get(catalog_item_link)
 
-    # Страница товара содержит кнопку добавления в корзину с корректным текстом
+    # Страница товара содержит кнопку добавления в корзину с ожидаемым текстом
     add_to_basket_button = wait.until(EC.visibility_of_element_located(add_to_basket_button_locator))
     assert add_to_basket_button.text == add_to_basket_button_text, \
         f"Add to basket button should contains text: {add_to_basket_button_text}"
