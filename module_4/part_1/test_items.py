@@ -17,8 +17,8 @@ def test_item_should_contains_add_to_basket_button(browser, user_language):
 
     # Act
     browser.get(catalog_item_link)
+    add_to_basket_button = wait.until(EC.visibility_of_element_located(add_to_basket_btn_locator))
 
     # Assert
-    add_to_basket_button = wait.until(EC.visibility_of_element_located(add_to_basket_btn_locator))
     assert add_to_basket_button.text == expected_btn_text, \
         f"Add to basket button should contains text: {expected_btn_text}"
