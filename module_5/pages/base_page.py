@@ -8,7 +8,7 @@ from module_5.pages.locators import BasePageLocators
 
 
 class BasePage:
-    def __init__(self, browser, url, timeout=1):
+    def __init__(self, browser, url, timeout=10):
         self.browser = browser
         self.url = url
         self.browser.implicitly_wait(timeout)
@@ -61,6 +61,16 @@ class BasePage:
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
 
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                     " probably unauthorised user"
+
+    def input(self, how, what, value):
+        element = self.browser.find_element(how, what)
+        element.click()
+        element.clear()
+        element.send_keys(value)
+
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert
         x = alert.text.split(" ")[2]
@@ -75,4 +85,3 @@ class BasePage:
             self.browser.switch_to.active_element
         except NoAlertPresentException:
             print("No second alert presented")
-
