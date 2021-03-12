@@ -21,10 +21,10 @@ class ProductPage(BasePage):
         assert message in messages, f"Info message '{message}' is not presented"
 
     def check_basket_product_name_message(self, product_name):
-        self.check_success_alert_message(f"{product_name} был добавлен в вашу корзину.")
+        self.check_success_alert_message(f"{product_name} has been added to your basket.")
 
     def check_basket_total_price_message(self, product_price):
-        self.check_info_alert_message(f"Стоимость корзины теперь составляет {product_price}")
+        self.check_info_alert_message(f"Your basket total is now {product_price}")
 
     def should_not_be_success_message(self):
         assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGES), \

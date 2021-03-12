@@ -8,7 +8,7 @@ from module_5.pages.locators import BasePageLocators
 
 
 class BasePage:
-    def __init__(self, browser, url, timeout=10):
+    def __init__(self, browser, url, timeout=1):
         self.browser = browser
         self.url = url
         self.browser.implicitly_wait(timeout)
@@ -40,7 +40,6 @@ class BasePage:
             WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
         except TimeoutException:
             return True
-
         return False
 
     def is_disappeared(self, how, what, timeout=4):
@@ -49,11 +48,14 @@ class BasePage:
                 until_not(EC.presence_of_element_located((how, what)))
         except TimeoutException:
             return False
-
         return True
 
     def go_to_login_page(self):
         link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
+        link.click()
+
+    def go_to_basket_page(self):
+        link = self.browser.find_element(*BasePageLocators.BASKET_LINK)
         link.click()
 
     def should_be_login_link(self):
