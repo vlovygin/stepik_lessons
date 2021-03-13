@@ -21,8 +21,8 @@ class ProductPageLocators:
     ADD_TO_BASKET_BUTTON = (By.CSS_SELECTOR, "#add_to_basket_form .btn")
     PRODUCT_NAME = (By.CSS_SELECTOR, ".product_main h1")
     PRODUCT_PRICE = (By.CSS_SELECTOR, ".product_main .price_color")
-    SUCCESS_MESSAGES = (By.CSS_SELECTOR, "#messages .alert-success .alertinner")
-    INFO_MESSAGES = (By.XPATH, "//div[contains(@class, 'alert-info')] //p[not(.//a)]")
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, "#messages .alert-success .alertinner")
+    INFO_MESSAGE = (By.XPATH, "//div[contains(@class, 'alert-info')] //p[not(.//a)]")
 
 
 class BasketPageLocators:
