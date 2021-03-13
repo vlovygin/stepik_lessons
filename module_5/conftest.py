@@ -1,6 +1,5 @@
 import pytest
 from selenium import webdriver
-from datetime import datetime
 
 
 def pytest_addoption(parser):
@@ -16,7 +15,7 @@ def language(request):
 
 
 @pytest.fixture(scope="function")
-def browser(request, user_language):
+def browser(request, language):
     browser_name = request.config.getoption("browser")
 
     if browser_name == "chrome":
@@ -25,7 +24,7 @@ def browser(request, user_language):
         browser = webdriver.Chrome(options=options)
     elif browser_name == "firefox":
         fp = webdriver.FirefoxProfile()
-        fp.set_preference("intl.accept_languages", user_language)
+        fp.set_preference("intl.accept_languages", language)
         browser = webdriver.Firefox(firefox_profile=fp)
     else:
         raise pytest.UsageError(f"Browser {browser_name} still is not implemented")

@@ -1,0 +1,127 @@
+{
+  "uid" : "12b2049de035962b",
+  "name" : "test_guest_can_add_product_to_basket[offer7]",
+  "fullName" : "module_5.test_product_page.TestProductPage#test_guest_can_add_product_to_basket",
+  "historyId" : "8433857a769ecd2ca3eba03399b040cb",
+  "time" : {
+    "start" : 1615665103139,
+    "stop" : 1615665106029,
+    "duration" : 2890
+  },
+  "status" : "skipped",
+  "statusMessage" : "XFAIL\n\nAssertionError: Success message 'Coders at Work has been added to your basket.' is not presented",
+  "statusTrace" : "self = <module_5.test_product_page.TestProductPage object at 0x000001B4C2853880>, browser = <selenium.webdriver.chrome.webdriver.WebDriver (session=\"d3cb1f9584cb6829adba438acd044be3\")>\npromo_offer = 'offer7'\n\n    @pytest.mark.parametrize('promo_offer',\n                             [\"offer0\", \"offer1\", \"offer2\", \"offer3\", \"offer4\", \"offer5\", \"offer6\",\n                              pytest.param(\"offer7\", marks=pytest.mark.xfail), \"offer8\", \"offer9\"])\n    def test_guest_can_add_product_to_basket(self, browser, promo_offer):\n        # Arrange\n        link = f\"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo={promo_offer}\"\n        page = ProductPage(browser, link)\n        page.open()\n        product_name = page.get_product_name()\n        product_price = page.get_product_price()\n    \n        # Act\n        page.add_product_to_basket()\n        page.solve_quiz_and_get_code()\n    \n        # Assert\n>       page.check_basket_product_name_message(product_name)\n\nmodule_5\\test_product_page.py:30: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nmodule_5\\pages\\product_page.py:24: in check_basket_product_name_message\n    self.check_success_alert_message(f\"{product_name} has been added to your basket.\")\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <module_5.pages.product_page.ProductPage object at 0x000001B4C286B670>, message = 'Coders at Work has been added to your basket.'\n\n    def check_success_alert_message(self, message):\n        messages = self.get_elements_text(*ProductPageLocators.SUCCESS_MESSAGES)\n>       assert message in messages, f\"Success message '{message}' is not presented\"\nE       AssertionError: Success message 'Coders at Work has been added to your basket.' is not presented\n\nmodule_5\\pages\\product_page.py:17: AssertionError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "browser",
+    "time" : {
+      "start" : 1615665101768,
+      "stop" : 1615665103128,
+      "duration" : 1360
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "language",
+    "time" : {
+      "start" : 1615665028175,
+      "stop" : 1615665028175,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  } ],
+  "testStage" : {
+    "status" : "skipped",
+    "statusMessage" : "XFAIL\n\nAssertionError: Success message 'Coders at Work has been added to your basket.' is not presented",
+    "statusTrace" : "self = <module_5.test_product_page.TestProductPage object at 0x000001B4C2853880>, browser = <selenium.webdriver.chrome.webdriver.WebDriver (session=\"d3cb1f9584cb6829adba438acd044be3\")>\npromo_offer = 'offer7'\n\n    @pytest.mark.parametrize('promo_offer',\n                             [\"offer0\", \"offer1\", \"offer2\", \"offer3\", \"offer4\", \"offer5\", \"offer6\",\n                              pytest.param(\"offer7\", marks=pytest.mark.xfail), \"offer8\", \"offer9\"])\n    def test_guest_can_add_product_to_basket(self, browser, promo_offer):\n        # Arrange\n        link = f\"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo={promo_offer}\"\n        page = ProductPage(browser, link)\n        page.open()\n        product_name = page.get_product_name()\n        product_price = page.get_product_price()\n    \n        # Act\n        page.add_product_to_basket()\n        page.solve_quiz_and_get_code()\n    \n        # Assert\n>       page.check_basket_product_name_message(product_name)\n\nmodule_5\\test_product_page.py:30: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nmodule_5\\pages\\product_page.py:24: in check_basket_product_name_message\n    self.check_success_alert_message(f\"{product_name} has been added to your basket.\")\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <module_5.pages.product_page.ProductPage object at 0x000001B4C286B670>, message = 'Coders at Work has been added to your basket.'\n\n    def check_success_alert_message(self, message):\n        messages = self.get_elements_text(*ProductPageLocators.SUCCESS_MESSAGES)\n>       assert message in messages, f\"Success message '{message}' is not presented\"\nE       AssertionError: Success message 'Coders at Work has been added to your basket.' is not presented\n\nmodule_5\\pages\\product_page.py:17: AssertionError",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "f7b915dd64154ed1",
+      "name" : "stdout",
+      "source" : "f7b915dd64154ed1.txt",
+      "type" : "text/plain",
+      "size" : 26
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : true,
+    "shouldDisplayMessage" : true,
+    "attachmentsCount" : 1
+  },
+  "afterStages" : [ {
+    "name" : "browser::0",
+    "time" : {
+      "start" : 1615665106176,
+      "stop" : 1615665108330,
+      "duration" : 2154
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "@pytest.mark.xfail"
+  }, {
+    "name" : "parentSuite",
+    "value" : "module_5"
+  }, {
+    "name" : "suite",
+    "value" : "test_product_page"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestProductPage"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-4MQUUU2"
+  }, {
+    "name" : "thread",
+    "value" : "10412-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "module_5.test_product_page"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "promo_offer",
+    "value" : "'offer7'"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ "@pytest.mark.xfail" ]
+  },
+  "source" : "12b2049de035962b.json",
+  "parameterValues" : [ "'offer7'" ]
+}

@@ -23,8 +23,8 @@ class BasePage:
             return False
         return True
 
-    def click(self, how, what):
-        element = self.browser.find_element(how, what)
+    def click(self, how, what, timeout=4):
+        element = WebDriverWait(self.browser, timeout).until(EC.element_to_be_clickable((how, what)))
         element.click()
 
     def get_element_text(self, how, what):
