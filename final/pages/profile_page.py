@@ -11,7 +11,9 @@ class ProfilePage(BasePage):
         self.click(*ProfilePageLocators.DELETE_PROFILE_BTN)
 
     def should_be_profile_updated_message(self):
-        assert "Profile updated" in self.get_success_messages(), "Profile updated message is not presented"
+        excepted_message = "Profile updated"
+        assert excepted_message in self.get_success_messages(), \
+            f"Profile updated message '{excepted_message}' is not presented"
 
     def check_profile_name(self, first_name, last_name):
         excepted_profile_name = " ".join(filter(None, [first_name, last_name]))
@@ -26,6 +28,20 @@ class EditProfilePage(BasePage):
         self.input(*EditProfilePageLocators.FIRST_NAME_INPUT, first_name)
         self.input(*EditProfilePageLocators.LAST_NAME_INPUT, last_name)
         self.click(*EditProfilePageLocators.SAVE_PROFILE_BTN)
+
+    def edit_email(self, email):
+        self.input(*EditProfilePageLocators.EMAIL_INPUT, email)
+        self.click(*EditProfilePageLocators.SAVE_PROFILE_BTN)
+
+    def check_danger_alert(self):
+        excepted_alert = "Oops! We found some errors - please check the error messages below and try again"
+        alert = self.browser.find_element(*EditProfilePageLocators.DANGER_MESSAGE)
+        assert excepted_alert == alert.text, f"Danger alert '{excepted_alert}' is not presented"
+
+    def check_email_form_error(self):
+        excepted_error = "A user with this email address already exists"
+        error = self.browser.find_element(*EditProfilePageLocators.EMAIL_FORM_ERROR)
+        assert excepted_error == error.text, f"Email form error '{excepted_error}' is not presented"
 
 
 class DeleteProfilePage(BasePage):

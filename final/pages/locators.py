@@ -27,7 +27,10 @@ class ProfilePageLocators:
 class EditProfilePageLocators:
     FIRST_NAME_INPUT = (By.CSS_SELECTOR, "#id_first_name")
     LAST_NAME_INPUT = (By.CSS_SELECTOR, "#id_last_name")
+    EMAIL_INPUT = (By.CSS_SELECTOR, "#id_email")
     SAVE_PROFILE_BTN = (By.CSS_SELECTOR, ".form-group .btn[type='submit']")
+    DANGER_MESSAGE = (By.CSS_SELECTOR, "#profile_form .alert-danger")
+    EMAIL_FORM_ERROR = (By.CSS_SELECTOR, "#id_email + span")
 
 
 class DeleteProfilePageLocators:

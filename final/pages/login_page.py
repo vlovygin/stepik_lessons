@@ -20,5 +20,5 @@ class LoginPage(BasePage):
         return [element.text for element in elements]
 
     def should_be_login_error_message(self):
-        assert "Please enter a correct username and password. Note that both fields may be case-sensitive." \
-               in self.get_error_messages(), "Login error message is not presented"
+        excepted_error = "Please enter a correct username and password. Note that both fields may be case-sensitive."
+        assert excepted_error in self.get_error_messages(), f"Login error message '{excepted_error}' is not presented"

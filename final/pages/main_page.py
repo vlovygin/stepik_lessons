@@ -4,13 +4,16 @@ from .base_page import BasePage
 class MainPage(BasePage):
 
     def should_be_registered_user_message(self):
-        assert "Thanks for registering!" in self.get_success_messages(), \
-            "Success registration message is not presented"
+        excepted_message = "Thanks for registering!"
+        assert excepted_message in self.get_success_messages(), \
+            f"Success registration message '{excepted_message}' is not presented"
 
     def should_be_login_user_message(self):
-        assert "Welcome back" in self.get_success_messages(), "Success login message is not presented"
+        excepted_message = "Welcome back"
+        assert excepted_message in self.get_success_messages(), \
+            f"Success login message '{excepted_message}' is not presented"
 
     def should_be_deleted_profile_message(self):
-        success_messages = self.get_success_messages()
-        assert "Your profile has now been deleted. Thanks for using the site." in success_messages, \
-            "Deleted profile message is not presented"
+        excepted_message = "Your profile has now been deleted. Thanks for using the site."
+        assert excepted_message in self.get_success_messages(), \
+            f"Deleted profile message '{excepted_message}' is not presented"

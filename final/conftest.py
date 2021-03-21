@@ -1,8 +1,7 @@
 import time
-
 import pytest
-from selenium import webdriver
 
+from selenium import webdriver
 from final.pages.login_page import LoginPage
 
 
