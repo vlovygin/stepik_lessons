@@ -1,5 +1,0 @@
-input#name
-//input[@name='user-lastname']
-input.form-control.third
-//input[@data-test='phone-test']
-//input[@class='form-control second']
