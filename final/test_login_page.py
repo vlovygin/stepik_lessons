@@ -7,45 +7,45 @@ main_page_url = "http://selenium1py.pythonanywhere.com/"
 login_page_url = "http://selenium1py.pythonanywhere.com/accounts/login/"
 
 
+@pytest.mark.personal_tests
 class TestLoginPage:
 
-    @pytest.mark.personal_tests
     def test_registration_new_user(self, browser, register_new_user):
         # Arrange
-        page = LoginPage(browser, login_page_url)
-        page.open()
+        login_page = LoginPage(browser, login_page_url)
+        login_page.open()
 
         # Act
         register_new_user()
 
         # Assert
-        page.should_be_registered_user_message()
+        main_page = MainPage(browser, browser.current_url)
+        main_page.should_be_registered_user_message()
 
-    @pytest.mark.personal_tests
     def test_auth_by_exists_user(self, browser, register_new_user):
         # Arrange
         email, password = register_new_user()
-        page = MainPage(browser, main_page_url)
-        page.logout()
+        main_page = MainPage(browser, main_page_url)
+        main_page.logout()
 
         # Act
-        page = LoginPage(browser, login_page_url)
-        page.open()
-        page.login(email, password)
+        login_page = LoginPage(browser, login_page_url)
+        login_page.open()
+        login_page.login(email, password)
 
         # Assert
-        page.should_be_login_user_message()
+        main_page = MainPage(browser, browser.current_url)
+        main_page.should_be_login_user_message()
 
-    @pytest.mark.personal_tests
-    # @pytest.mark.xfail
-    def test_auth_by_not_exists_user(self, browser, register_new_user):
+    @pytest.mark.negative_test
+    def test_auth_with_incorrect_password(self, browser, register_new_user):
         # Arrange
         email, password = "user@mail.ru", "incorrect_password"
 
         # Act
-        page = LoginPage(browser, login_page_url)
-        page.open()
-        page.login(email, password)
+        login_page = LoginPage(browser, login_page_url)
+        login_page.open()
+        login_page.login(email, password)
 
         # Assert
-        page.should_be_error_login_message()
+        login_page.should_be_login_error_message()
