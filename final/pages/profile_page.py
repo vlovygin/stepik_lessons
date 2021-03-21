@@ -13,6 +13,13 @@ class ProfilePage(BasePage):
     def should_be_profile_updated_message(self):
         assert "Profile updated" in self.get_success_messages(), "Profile updated message is not presented"
 
+    def check_profile_name(self, first_name, last_name):
+        excepted_profile_name = " ".join(filter(None, [first_name, last_name]))
+        profile_name_element = self.browser.find_element(*ProfilePageLocators.PROFILE_NAME)
+        profile_name = profile_name_element.text
+        assert excepted_profile_name == profile_name, \
+            f"Excepted profile name: {excepted_profile_name}, actual: {profile_name}"
+
 
 class EditProfilePage(BasePage):
     def edit_name(self, first_name, last_name):

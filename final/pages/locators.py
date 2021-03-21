@@ -21,6 +21,7 @@ class LoginPageLocators:
 class ProfilePageLocators:
     EDIT_PROFILE_BTN = (By.LINK_TEXT, "Edit profile")
     DELETE_PROFILE_BTN = (By.CSS_SELECTOR, "#delete_profile")
+    PROFILE_NAME = (By.XPATH, "//table //th[text()='Name']//following-sibling::td")
 
 
 class EditProfilePageLocators:

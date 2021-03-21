@@ -14,8 +14,7 @@ class TestProfilePage:
     @pytest.mark.parametrize("first_name, last_name", [
         ("edited_first_name", "edited_last_name"),
         ("edited_first_name", ""),
-        ("", "edited_last_name"),
-        ("", "")])
+        ("", "edited_last_name")])
     def test_user_can_edit_profile_name(self, browser, register_new_user, first_name, last_name):
         # Arrange
         register_new_user()
@@ -31,6 +30,7 @@ class TestProfilePage:
         # Assert
         profile_page = ProfilePage(browser, browser.current_url)
         profile_page.should_be_profile_updated_message()
+        profile_page.check_profile_name(first_name, last_name)
 
     def test_user_can_delete_profile(self, browser, register_new_user):
         # Arrange
