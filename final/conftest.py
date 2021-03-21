@@ -50,3 +50,8 @@ def register_new_user(browser):
         return email, password
 
     return _register_new_user
+
+
+def pytest_configure(config):
+    config.addinivalue_line("markers", "negative_test: Negative tests")
+    config.addinivalue_line("markers", "personal_tests: My personal tests")

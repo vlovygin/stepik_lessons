@@ -29,6 +29,7 @@ class TestProfilePage:
         edit_profile_page.edit_name(first_name, last_name)
 
         # Assert
+        profile_page = ProfilePage(browser, browser.current_url)
         profile_page.should_be_profile_updated_message()
 
     def test_user_can_delete_profile(self, browser, register_new_user):

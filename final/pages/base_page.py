@@ -22,7 +22,7 @@ class BasePage:
         element.clear()
         element.send_keys(value)
 
-    def click(self, how, what, timeout=4):
+    def click(self, how, what, timeout=10):
         element = WebDriverWait(self.browser, timeout).until(EC.element_to_be_clickable((how, what)))
         element.click()
 
