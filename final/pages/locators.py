@@ -20,6 +20,7 @@ class LoginPageLocators:
 
 class ProfilePageLocators:
     EDIT_PROFILE_BTN = (By.LINK_TEXT, "Edit profile")
+    CHANGE_PASSWORD_BTN = (By.LINK_TEXT, "Change password")
     DELETE_PROFILE_BTN = (By.CSS_SELECTOR, "#delete_profile")
     PROFILE_NAME = (By.XPATH, "//table //th[text()='Name']//following-sibling::td")
 
@@ -31,6 +32,13 @@ class EditProfilePageLocators:
     SAVE_PROFILE_BTN = (By.CSS_SELECTOR, ".form-group .btn[type='submit']")
     DANGER_MESSAGE = (By.CSS_SELECTOR, "#profile_form .alert-danger")
     EMAIL_FORM_ERROR = (By.CSS_SELECTOR, "#id_email + span")
+
+
+class ChangePasswordPageLocators:
+    OLD_PASSWORD_INPUT = (By.CSS_SELECTOR, "#change_password_form #id_old_password")
+    NEW_PASSWORD_INPUT = (By.CSS_SELECTOR, "#change_password_form #id_new_password1")
+    NEW_PASSWORD_CONFIRM_INPUT = (By.CSS_SELECTOR, "#change_password_form #id_new_password2")
+    SAVE_BTN = (By.CSS_SELECTOR, ".form-group .btn[type='submit']")
 
 
 class DeleteProfilePageLocators:

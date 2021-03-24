@@ -38,5 +38,5 @@ class BasePage:
     def logout(self):
         self.click(*BasePageLocators.LOGOUT_BUTTON)
 
-    def go_to_account_page(self):
+    def go_to_profile_page(self):
         self.click(*BasePageLocators.ACCOUNT_BUTTON)

@@ -3,9 +3,15 @@ from .locators import ProfilePageLocators, DeleteProfilePageLocators, EditProfil
 
 
 class ProfilePage(BasePage):
+    def __init__(self, browser):
+        url = "http://selenium1py.pythonanywhere.com/accounts/profile/"
+        super().__init__(browser, url)
 
     def go_to_edit_profile(self):
         self.click(*ProfilePageLocators.EDIT_PROFILE_BTN)
+
+    def go_to_change_password(self):
+        self.click(*ProfilePageLocators.CHANGE_PASSWORD_BTN)
 
     def go_to_delete_profile(self):
         self.click(*ProfilePageLocators.DELETE_PROFILE_BTN)
@@ -14,6 +20,11 @@ class ProfilePage(BasePage):
         excepted_message = "Profile updated"
         assert excepted_message in self.get_success_messages(), \
             f"Profile updated message '{excepted_message}' is not presented"
+
+    def should_be_password_updated_message(self):
+        excepted_message = "Password updated"
+        assert excepted_message in self.get_success_messages(), \
+            f"Password updated message '{excepted_message}' is not presented"
 
     def check_profile_name(self, first_name, last_name):
         excepted_profile_name = " ".join(filter(None, [first_name, last_name]))
@@ -24,6 +35,10 @@ class ProfilePage(BasePage):
 
 
 class EditProfilePage(BasePage):
+    def __init__(self, browser):
+        url = "http://selenium1py.pythonanywhere.com/accounts/profile/edit"
+        super().__init__(browser, url)
+
     def edit_name(self, first_name, last_name):
         self.input(*EditProfilePageLocators.FIRST_NAME_INPUT, first_name)
         self.input(*EditProfilePageLocators.LAST_NAME_INPUT, last_name)
@@ -45,6 +60,10 @@ class EditProfilePage(BasePage):
 
 
 class DeleteProfilePage(BasePage):
+    def __init__(self, browser):
+        url = "http://selenium1py.pythonanywhere.com/accounts/profile/delete/"
+        super().__init__(browser, url)
+
     def confirm_delete_profile(self, password):
         self.input(*DeleteProfilePageLocators.PASSWORD_INPUT, password)
         self.click(*DeleteProfilePageLocators.DELETE_PROFILE_BTN)

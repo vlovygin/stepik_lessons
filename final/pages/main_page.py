@@ -2,6 +2,9 @@ from .base_page import BasePage
 
 
 class MainPage(BasePage):
+    def __init__(self, browser):
+        url = "http://selenium1py.pythonanywhere.com/"
+        super().__init__(browser, url)
 
     def should_be_registered_user_message(self):
         excepted_message = "Thanks for registering!"
